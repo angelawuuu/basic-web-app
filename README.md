@@ -1,6 +1,6 @@
 ## Getting Started
 
-First install the app:
+First install the app using the command:
 
 ```bash
 npm install
