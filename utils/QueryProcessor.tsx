@@ -15,10 +15,18 @@ export default function QueryProcessor(query: string): string {
 
   const largestNumPattern = /^Which of the following numbers is the largest: (\d+(?:, ?\d+)*)\?$/;
   if (largestNumPattern.test(query)) {
-    const nums = query.match(/\d+/g).map(Number);
-    return (
-      (Math.max(...nums)).toString()
-    );
+    if (query == null) {
+        return "None";
+    }
+    const nums = query.match(/\d+/g); // Match only if query is not null
+    if (nums !== null) { // Check if nums is not null
+      const numbers = nums.map(Number);
+      return (
+        (Math.max(...numbers)).toString()
+      );
+    } else {
+      return "None"; // Return "None" if no numbers were found
+    }
   }
 
   return "";
