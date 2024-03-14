@@ -13,9 +13,11 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
-  if (query.toLowerCase().includes("Which of the following numbers is the largest: 88, 29, 3?")) {
+  const largestNumPattern = /^Which of the following numbers is the largest: (\d+(?:, ?\d+)*)\?$/;
+  if (largestNumPattern.test(query)) {
+    const nums = query.match(/\d+/g).map(Number);
     return (
-      "88"
+      (Math.max(...nums)).toString();
     );
   }
 
