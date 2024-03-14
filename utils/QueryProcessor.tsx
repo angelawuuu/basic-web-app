@@ -45,5 +45,21 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  const multPattern = /^What is (\d+) multiplied by (\d+)\?$/;
+  if (multPattern.test(query)) {
+    if (query == null) {
+        return "None";
+    }
+    const nums = query.match(/\d+/g); // Match only if query is not null
+    if (nums !== null) { // Check if nums is not null
+      const numbers = nums.map(Number);
+      return (
+        (numbers[0]*numbers[1]).toString()
+      );
+    } else {
+      return "None"; // Return "None" if no numbers were found
+    }
+  }
+
   return "";
 }
