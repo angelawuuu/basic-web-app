@@ -17,7 +17,7 @@ export default function QueryProcessor(query: string): string {
   if (largestNumPattern.test(query)) {
     const nums = query.match(/\d+/g).map(Number);
     return (
-      (Math.max(...nums)).toString();
+      (Math.max(...nums)).toString()
     );
   }
 
